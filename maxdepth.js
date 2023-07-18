@@ -69,3 +69,29 @@ var maxDepthBFS = function(root) {
 // The while loop ends because the queue is empty.
 
 // The function returns depth which is 3.
+var maxDepthBFS = function(root) {
+    if (root == null){
+        return 0;
+    }
+
+    let queue = [];
+    queue.push(root);
+
+    let depth = 0;
+
+    while (queue.length !== 0){
+        let levelSize = queue.length;
+
+        for (let i = 0; i < levelSize; i++){
+            let currentNode = queue.shift(); // Pop the front node of the queue
+            if (currentNode.left !== null){
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right !== null){
+                queue.push(currentNode.right);
+            }
+        }
+        depth++;
+    }
+    return depth++;
+};
