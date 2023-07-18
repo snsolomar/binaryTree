@@ -17,3 +17,30 @@ var maxDepthR = function(root) {
 var maxDepthI = function(root) {
 
 };
+
+// Breadth-First Search 
+var maxDepthBFS = function(root) {
+    if (root == null){
+        return 0;
+    }
+
+    let queue = [];
+    queue.push(root);
+
+    let depth = 0;
+
+    while (queue.length !== 0){
+        let levelSize = queue.length // Get the current level size
+        for (let i = 0; i < levelSize; i++) {
+            let currentNode = queue.shift(); // Pop the front node of the queue
+            if (currentNode.left !== null){
+                queue.push(currentNode.left); // Add left child to the end of the queue\
+            }
+            if (currentNode.right !== null){
+                queue.push(currentNode.right); // Add right child to the end of the queue\
+            }
+        }
+        depth++;
+    }
+    return depth;
+};
